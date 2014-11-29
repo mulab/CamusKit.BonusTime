@@ -11,7 +11,7 @@ var cardName;
 var cardClassName;
 
 minNum=0;
-maxNum=400;
+maxNum=800;
 readJSON();
 randomMath();
 $("body").keydown(function(event){
