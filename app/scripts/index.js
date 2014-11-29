@@ -12,23 +12,16 @@ var cardClassName;
 
 minNum=0;
 maxNum=800;
-readJSON();
 randomMath();
+console.log(minNum);
+console.log(maxNum);
+
 $("body").keydown(function(event){
     console.log(event.which);
     if (event.which == 32) {
       Start ();
     };
 });
-
-function readJSON () {
-  $.getJSON(dataroot, function (data) {
-    minNum = parseInt(data.range[0]);
-    maxNum = parseInt(data.range[1]);
-    console.log(minNum);
-    console.log(maxNum);
-  });
-}
 
 function randomMath () {
   randomNum = minNum + (Math.round(Math.random() * (maxNum - minNum)));
