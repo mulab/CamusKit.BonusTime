@@ -20,11 +20,20 @@ $("body").keydown(function(event){
     console.log(event.which);
     if (event.which == 32) {
       Start ();
-    };
+    }
 });
 
 function randomMath () {
-  randomNum = minNum + (Math.round(Math.random() * (maxNum - minNum)));
+  randomNum = 0;
+  for (var i = 0; i < 3; i++) {
+    randomNum *= 10;
+    var temp = Math.floor(Math.random() * 10);
+    console.log(temp);
+    if (temp == 10) {
+      temp = 9;
+    }
+    randomNum += temp;
+  }
   randomToString(randomNum);
   console.log(randomNum);
 }
