@@ -1,11 +1,15 @@
 'use strict';
 
 $(document).ready(function () {
-  // $.getJSON('scripts/data.json', function (data) {
-  //   console.log(data['range']);
-  // });
-
-  var minNum = 0, maxNum = 999, size = 3;
+  var readConfigFromJSON = function () {
+    var minNum = 0, maxNum = 999, size = 3;
+    $.getJSON('config.json', function (data) {
+      minNum = data.range[0];
+      maxNum = data.range[1];
+      size = data.range[2];
+    });
+    return [minNum, maxNum, size];
+  };
 
   var getRandomNum = function (minNum, maxNum, size) {
     var str = Math.round(Math.random() * (maxNum - minNum + 1) + minNum).toString();
@@ -57,7 +61,8 @@ $(document).ready(function () {
     }
   };
 
-  var numArr = getRandomNum(minNum, maxNum, size);
+  var config = readConfigFromJSON();
+  var numArr = getRandomNum(config[0], config[1], config[2]);
   var pressTimes = 0, preNum = 0;
   $('body').keydown(function (event) {
     if (event.which === 32) {
@@ -67,7 +72,7 @@ $(document).ready(function () {
       } else {
         pressTimes = 0;
         clearNum(numArr);
-        numArr = getRandomNum(minNum, maxNum, size);
+        numArr = getRandomNum(config[0], config[1], config[2]);
       }
       pressTimes++;
     }
