@@ -17,13 +17,13 @@ $(document).ready(function () {
     $('#shape').toggleClass('ring').toggleClass('cube');
   };
 
-  var toggleBetweenNumAndCube = function (ringNum, cubeNum) {
+  var toggleBetweenRingAndCube = function (ringNum, cubeNum) {
     var $shape = $('#shape');
     $shape.toggleClass('ringShow_' + ringNum).toggleClass('cubeShow_' + cubeNum);
     $shape.css('-webkit-transform', 'rotateY(' + (-36 * ringNum) + 'deg)');
   };
 
-  var toggleJump = function (num) {
+  var toggleCardJump = function (num) {
     $('#card' + num).toggleClass('jump' + num);
   };
 
@@ -31,28 +31,28 @@ $(document).ready(function () {
     $('#num' + cardNum).text(showNum);
   };
 
-  var numJump = function (num) {
+  var toggleNumJump = function (num) {
     $('#num' + num).toggleClass('jumpDown');
   };
 
   var showNumByTurn = function (times, targetNum, originNum) {
     toggleShape();
-    toggleBetweenNumAndCube(targetNum, originNum);
+    toggleBetweenRingAndCube(targetNum, originNum);
     setTimeout(function () {
-      toggleJump(numArr[times]);
+      toggleCardJump(numArr[times]);
       setTimeout(function () {
         displayNum(times + 1, numArr[times]);
-        numJump(times + 1);
+        toggleNumJump(times + 1);
         toggleShape();
-        toggleBetweenNumAndCube(targetNum, targetNum);
-        toggleJump(numArr[times]);
+        toggleBetweenRingAndCube(targetNum, targetNum);
+        toggleCardJump(numArr[times]);
       }, 1100);
     }, 3300);
   };
 
   var clearNum = function (arr) {
     for (var i = 0; i < arr.length; i++) {
-      numJump(i);
+      toggleNumJump(i);
       $('#num' + (i + 1)).text('');
     }
   };
