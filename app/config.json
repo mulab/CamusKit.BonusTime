@@ -4,5 +4,6 @@
     "999",
     "3"
   ],
-  "background": false
+  "background": false,
+  "card": false
 }

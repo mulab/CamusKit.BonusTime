@@ -3,19 +3,29 @@
 $(document).ready(function () {
   // Read config from config.json
   var readConfigFromJSON = function () {
-    var minNum = 0, maxNum = 999, size = 3, hasBackground = false;
-    $.getJSON('config.json', function (data) {
-      minNum = data.range[0];
-      maxNum = data.range[1];
-      size = data.range[2];
-      hasBackground = data.background;
+    var minNum = 0, maxNum = 999, size = 3, hasBackground = false, cardBackground = false;
+    $.ajax({
+      type: 'get',
+      async: false,
+      url: 'config.json',
+      contentType: 'application/json; charset=utf-8',
+      dataType: 'json',
+      success: function (data) {
+        minNum = data.range[0];
+        maxNum = data.range[1];
+        size = data.range[2];
+        hasBackground = data.background;
+        cardBackground = data.card;
+      }
     });
-    return [minNum, maxNum, size, hasBackground];
+    return [minNum, maxNum, size, hasBackground, cardBackground];
   };
 
   // Add special background
   var addBackground = function () {
     $('body').css('background', 'url(\'../images/background.jpg\') no-repeat center');
+  };
+  var addCardBackground = function () {
     for (var i = 0; i < 10; i++) {
       $('#card' + i).css('background', 'url(\'../images/' + i + '.jpg\') no-repeat center 200px').text('');
     }
@@ -85,6 +95,8 @@ $(document).ready(function () {
   // Add background
   if (config[3])
     addBackground();
+  if (config[4])
+    addCardBackground();
 
   // Lottery
   var numArr = getRandomNum(config[0], config[1], config[2]);
