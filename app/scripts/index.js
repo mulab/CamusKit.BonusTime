@@ -32,8 +32,14 @@ $(document).ready(function () {
   };
 
   // Get a random number, and return as a string array
-  var getRandomNum = function (minNum, maxNum, size) {
-    var str = Math.round(Math.random() * (maxNum - minNum + 1) + minNum).toString();
+  var getRandomNum = function (usedNum, minNum, maxNum, size) {
+    var randomNum = Math.round(Math.random() * (maxNum - minNum + 1) + minNum);
+    while (usedNum.filter(function (val) {
+      return val == randomNum;
+    }).length !== 0)
+      randomNum = Math.round(Math.random() * (maxNum - minNum + 1) + minNum);
+    usedNum.push(randomNum);
+    var str = randomNum.toString();
     while (str.length < size) str = '0' + str;
     return str.split('');
   };
@@ -99,7 +105,8 @@ $(document).ready(function () {
     addCardBackground();
 
   // Lottery
-  var numArr = getRandomNum(config[0], config[1], config[2]);
+  var usedArr = [];
+  var numArr = getRandomNum(usedArr, config[0], config[1], config[2]);
   var pressTimes = 0, preNum = 0;
   $('body').keydown(function (event) {
     if (event.which === 32) {
@@ -109,7 +116,7 @@ $(document).ready(function () {
       } else {
         pressTimes = 0;
         clearNum(numArr);
-        numArr = getRandomNum(config[0], config[1], config[2]);
+        numArr = getRandomNum(usedArr, config[0], config[1], config[2]);
       }
       pressTimes++;
     }
