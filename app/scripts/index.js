@@ -34,9 +34,7 @@ $(document).ready(function () {
   // Get a random number, and return as a string array
   var getRandomNum = function (usedNum, minNum, maxNum, size) {
     var randomNum = Math.round(Math.random() * (maxNum - minNum + 1) + minNum);
-    while (usedNum.filter(function (val) {
-      return val == randomNum;
-    }).length !== 0)
+    while (usedNum.indexOf(randomNum) !== -1)
       randomNum = Math.round(Math.random() * (maxNum - minNum + 1) + minNum);
     usedNum.push(randomNum);
     var str = randomNum.toString();
