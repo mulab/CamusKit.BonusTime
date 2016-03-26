@@ -2,11 +2,10 @@ var randomNum = 0;
 var Num1;
 var Num2;
 var Num3;
+var Num4;
 var origin = 0;
-var cardName;
-var cardClassName;
 var flag = true;
-var maxNum = 999;
+var maxNum = 9999;
 
 $("body").keydown(function (event) {
   if (event.which === 32) {
@@ -22,7 +21,7 @@ $("body").keydown(function (event) {
 });
 
 function randomMath() {
-  randomNum = Math.random() * maxNum;
+  randomNum = Math.random() * maxNum + 1;
   randomToString(randomNum);
 }
 
@@ -33,12 +32,19 @@ function randomToString(x) {
     Num3 = x.toString();
   } else if (x < 100) {
     Num1 = "0";
+    Num2 = "0";
+    Num3 = x.toString().charAt(0);
+    Num4 = x.toString().charAt(1);
+  } else if (x < 1000) {
+    Num1 = "0";
     Num2 = x.toString().charAt(0);
     Num3 = x.toString().charAt(1);
+    Num4 = x.toString().charAt(2);
   } else {
     Num1 = x.toString().charAt(0);
     Num2 = x.toString().charAt(1);
     Num3 = x.toString().charAt(2);
+    Num4 = x.toString().charAt(3);
   }
 }
 
@@ -80,9 +86,11 @@ function Start() {
   removeClassName(document.getElementById("num1"), 'jumpDown');
   removeClassName(document.getElementById("num2"), 'jumpDown');
   removeClassName(document.getElementById("num3"), 'jumpDown');
+  removeClassName(document.getElementById("num4"), 'jumpDown');
   document.getElementById("num1").innerHTML = " ";
   document.getElementById("num2").innerHTML = " ";
   document.getElementById("num3").innerHTML = " ";
+  document.getElementById("num4").innerHTML = " ";
 
   randomMath();
   randomToString(randomNum);
@@ -90,19 +98,6 @@ function Start() {
   removeClassName(shape, 'cube');
   addClassName(shape, 'ring');
   stage.style.webkitTransform = 'translateZ(-200px)';
-
-  cardName = "card" + Num1;
-  cardClassName = "jump" + Num1;
-  addClassName(document.getElementById(cardName), cardClassName);
-
-  cardName = "card" + Num2;
-  cardClassName = "jump" + Num2;
-  addClassName(document.getElementById(cardName), cardClassName);
-
-  cardName = "card" + Num3;
-  cardClassName = "jump" + Num3;
-  addClassName(document.getElementById(cardName), cardClassName);
-  origin = Num3;
 }
 
 function End() {
@@ -111,19 +106,21 @@ function End() {
 
   checkoutNum(origin, Num1); //open and show the number
   document.getElementById("num1").innerHTML = Num1;
-  removeClassName(document.getElementById(cardName), cardClassName);
   addClassName(document.getElementById("num1"), 'jumpDown');
   checkoutCube(Num1, Num1);
 
   checkoutNum(Num1, Num2); //open and show the number
   document.getElementById("num2").innerHTML = Num2;
-  removeClassName(document.getElementById(cardName), cardClassName);
   addClassName(document.getElementById("num2"), 'jumpDown');
   checkoutCube(Num2, Num2);
 
   checkoutNum(Num2, Num3); //open and show the number
   document.getElementById("num3").innerHTML = Num3;
-  removeClassName(document.getElementById(cardName), cardClassName);
   addClassName(document.getElementById("num3"), 'jumpDown');
   checkoutCube(Num3, Num3);
+
+  checkoutNum(Num3, Num4); //open and show the number
+  document.getElementById("num4").innerHTML = Num4;
+  addClassName(document.getElementById("num4"), 'jumpDown');
+  checkoutCube(Num4, Num4);
 }

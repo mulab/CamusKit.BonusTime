@@ -121,6 +121,10 @@ body {
   }
 }
 
+.container {
+  max-width: 933px;
+}
+
 #container {
   -webkit-perspective: 800px; /* For compatibility with iPhone 3.0, we leave off the units here */
   -webkit-perspective-origin: 50% 225px;
