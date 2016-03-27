@@ -5,7 +5,7 @@ var Num3;
 var Num4;
 var origin = 0;
 var flag = true;
-var maxNum = 9999;
+var maxNum = 1200;
 var usedNum = [];
 
 $('body').keydown(function (event) {
@@ -21,14 +21,18 @@ $('body').keydown(function (event) {
   }
 });
 
-setInterval($.ajax({
-  url: 'https://wewall.lab.mu/votes',
-  async: false,
-  success: function(data) {
-    maxNum = (data['counts'][0] > data['counts'][1]) ? data['counts'][0] : data['counts'][1];
-    console.log(maxNum);
-  }
-}), 10000);
+function update() {
+  $.ajax({
+    url: 'https://wewall.lab.mu/votes',
+    async: false,
+    success: function (data) {
+      maxNum = (data['counts'][0] > data['counts'][1]) ? data['counts'][0] : data['counts'][1];
+    }
+  });
+  console.log(maxNum);
+}
+
+setInterval('update()', 1000);
 
 function randomMath() {
   randomNum = Math.floor(Math.random() * maxNum + 1);
