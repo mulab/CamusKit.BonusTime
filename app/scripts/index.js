@@ -32,7 +32,7 @@ function update() {
   console.log(maxNum);
 }
 
-setInterval('update()', 1000);
+setInterval('update()', 10000);
 
 function randomMath() {
   randomNum = Math.floor(Math.random() * maxNum + 1);
