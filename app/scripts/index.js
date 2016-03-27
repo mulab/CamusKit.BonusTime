@@ -48,7 +48,8 @@ function randomToString(x) {
   if (x < 10) {
     Num1 = '0';
     Num2 = '0';
-    Num3 = x.toString();
+    Num3 = '0';
+    Num4 = x.toString();
   } else if (x < 100) {
     Num1 = '0';
     Num2 = '0';
