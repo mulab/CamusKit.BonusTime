@@ -111,12 +111,12 @@ $(document).ready(function () {
       if (pressTimes < numArr.length) {
         showNumByTurn(pressTimes, numArr[pressTimes], preNum);
         preNum = numArr[pressTimes];
+        pressTimes++;
       } else {
         pressTimes = 0;
         clearNum(numArr);
         numArr = getRandomNum(usedArr, config[0], config[1], config[2]);
       }
-      pressTimes++;
     }
   })
 });
