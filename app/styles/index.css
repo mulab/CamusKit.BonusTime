@@ -149,7 +149,7 @@ body {
   font-family: Times, serif;
   font-size: 110pt;
   color: black;
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(101, 61, 124, 0.6);
   -webkit-transition: -webkit-transform 2s, opacity 2s;
   -webkit-backface-visibility: hidden;
 }
@@ -760,7 +760,7 @@ body {
   font-family: Times, serif;
   font-size: 105pt;
   color: black;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(101, 61, 124, 0.5);
   margin-right: 15px;
   margin-left: 15px;
   position: relative;
