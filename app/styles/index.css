@@ -93,7 +93,7 @@ body {
 }
 
 body {
-  background: #000;
+  background: url("../images/background.jpg");
   color: white;
   font-family: 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif;
   font-size: 12px;

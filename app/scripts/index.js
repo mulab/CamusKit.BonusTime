@@ -106,8 +106,8 @@ $(document).ready(function () {
   var config = readConfigFromJSON();
 
   // Add background
-  if (config[3])
-    addBackground();
+  // if (config[3])
+  //   addBackground();
   if (config[4])
     addCardBackground();
 
