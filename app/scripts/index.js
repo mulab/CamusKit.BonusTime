@@ -3,7 +3,7 @@
 $(document).ready(function () {
   // Read config from config.json
   var readConfigFromJSON = function () {
-    var minNum = 0, maxNum = 999, size = 3, hasBackground = false, cardBackground = false;
+    var minNum = 0, maxNum = 999, size = 3, hasBackground = false, cardBackground = false, showMode = 0;
     $.ajax({
       type: 'get',
       async: false,
@@ -16,9 +16,10 @@ $(document).ready(function () {
         size = data.range[2];
         hasBackground = data.background;
         cardBackground = data.card;
+        showMode = data.mode;
       }
     });
-    return [minNum, maxNum, size, hasBackground, cardBackground];
+    return [minNum, maxNum, size, hasBackground, cardBackground, showMode];
   };
 
   // Add special background
@@ -85,10 +86,18 @@ $(document).ready(function () {
     }, 3300);
   };
 
+  // Show all num once
+  var showNumOnce = function (numArr) {
+    for (var i = 0; i < numArr.length; i++) {
+      displayNum(i + 1, numArr[i]);
+      toggleNumJump(i + 1);
+    }
+  };
+
   // clear numbers
   var clearNum = function (arr) {
     for (var i = 0; i < arr.length; i++) {
-      toggleNumJump(i);
+      toggleNumJump(i + 1);
       $('#num' + (i + 1)).text('');
     }
   };
@@ -107,15 +116,30 @@ $(document).ready(function () {
   var numArr = getRandomNum(usedArr, config[0], config[1], config[2]);
   var pressTimes = 0, preNum = 0;
   $('body').keydown(function (event) {
-    if (event.which === 32) {
-      if (pressTimes < numArr.length) {
-        showNumByTurn(pressTimes, numArr[pressTimes], preNum);
-        preNum = numArr[pressTimes];
+    if (config[5] === 0) {
+      if (event.which === 32) {
+        if (pressTimes < numArr.length) {
+          showNumByTurn(pressTimes, numArr[pressTimes], preNum);
+          preNum = numArr[pressTimes];
+          pressTimes++;
+        } else {
+          pressTimes = 0;
+          clearNum(numArr);
+          numArr = getRandomNum(usedArr, config[0], config[1], config[2]);
+        }
+      }
+    } else if (config[5] === 1) {
+      if (event.which === 32 && pressTimes === 0) {
+        toggleShape();
         pressTimes++;
-      } else {
-        pressTimes = 0;
+      } else if (event.which === 32 && pressTimes === 1) {
+        toggleShape();
+        showNumOnce(numArr);
+        pressTimes++;
+      } else if (event.which === 32 && pressTimes === 2) {
         clearNum(numArr);
         numArr = getRandomNum(usedArr, config[0], config[1], config[2]);
+        pressTimes = 0;
       }
     }
   })
