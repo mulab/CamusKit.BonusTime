@@ -1,23 +1,41 @@
 'use strict';
 
 $(document).ready(function () {
-  var persons = ['和德哥', '和马伯里与麦迪逊', '和辅导猿', '和树……懒', '和宋仲基', '和sunshine', '和张士超', '和（未来的）男朋友', '和坐在你左边的人', '和小廌'];
-  var places = ['在民法课上', '在二教的地下室', '在十四号楼的小树林里', '在主楼的广场', '在明理楼的复印店', '在C楼的理发店', '在室友的床上', '在文图的负二层', '在大礼堂的屋顶上', '在老馆的落地窗前'];
-  var things = ['吃小桥', '吃香锅', '背太黄太厚', '唱甜蜜具现式', '刷阳光长跑', '一起找学生卡', '一起取快递', '唱校歌', '读case', '深夜截课'];
-  var intervalFlag = true, interval = 0;
+  var $body = $('body'), $window = $(window);
 
-  $('body').keydown(function (event) {
+  $body.css('width', $window.innerWidth()).css('height', $window.innerHeight());
+  $window.resize(function () {
+    $body.css('width', $window.innerWidth()).css('height', $window.innerHeight());
+  });
+
+  var persons = ['和风', '细雨', '暖阳', '烈日', '大雾', '大风', '暴雨', '雷雨', '多云', '冰雹'];
+  var places = ['渤海', '黄海', '东海', '南海', '黑海', '红海', '里海', '北冰洋', '加勒比', '池塘'];
+  var things = ['帆船', '游轮', '货轮', '战舰', '油船', '散货船', '集装箱船', '塑料板', '竹筏', '救生圈'];
+  var intervalFlag = 0, interval1 = 0, interval2 = 0, interval3 = 0;
+
+  $body.keydown(function (event) {
     if (event.which === 32) {
-      if (intervalFlag) {
-        interval = setInterval(function () {
+      if (!intervalFlag) {
+        interval1 = setInterval(function () {
           $('.area1').text(persons[Math.floor(Math.random() * persons.length)]);
+        }, 100);
+        interval2 = setInterval(function () {
           $('.area2').text(places[Math.floor(Math.random() * places.length)]);
+        }, 100);
+        interval3 = setInterval(function () {
           $('.area3').text(things[Math.floor(Math.random() * things.length)]);
         }, 100);
-        intervalFlag = false;
-      } else {
-        clearInterval(interval);
-        intervalFlag = true;
+
+        intervalFlag = 1;
+      } else if (intervalFlag === 1) {
+        clearInterval(interval1);
+        intervalFlag = 2;
+      } else if (intervalFlag === 2) {
+        clearInterval(interval2);
+        intervalFlag = 3;
+      } else if (intervalFlag === 3) {
+        clearInterval(interval3);
+        intervalFlag = 0;
       }
     }
   });
