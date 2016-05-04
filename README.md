@@ -7,5 +7,5 @@ Actually I get this idea by a CSS3 3D & animation demo, but I can't find it. If 
 
 ---
 
-Created by [Yue Dayu](github.com/yuedayu) and maintained by [Lab μ](lab.mu).
+Created by [Yue Dayu](/github.com/yuedayu) and maintained by [Lab μ](/lab.mu).
 All right reserved.
