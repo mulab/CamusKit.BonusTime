@@ -770,3 +770,8 @@ body {
   margin-right: 0;
   margin-left: 0;
 }
+
+.bonus {
+  text-align: center;
+  font-size: 60px;
+}

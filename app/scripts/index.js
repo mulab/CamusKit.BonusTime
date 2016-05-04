@@ -24,7 +24,7 @@ $(document).ready(function () {
 
   // Add special background
   var addBackground = function () {
-    $('body').css('background', 'url(\'../images/background.jpg\') no-repeat center');
+    $('body').css('background', 'url(\'images/background.jpg\') center');
   };
   var addCardBackground = function () {
     for (var i = 0; i < 10; i++) {
@@ -114,8 +114,20 @@ $(document).ready(function () {
   // Lottery
   var usedArr = [];
   var numArr = getRandomNum(usedArr, config[0], config[1], config[2]);
-  var pressTimes = 0, preNum = 0;
+  var pressTimes = 0, preNum = 0, bonusNum = 0;
   $('body').keydown(function (event) {
+    if (event.which === 32) {
+      if (bonusNum == 0 || bonusNum == 1) {
+        $('.bonus').text('Kindle');
+      } else if (bonusNum == 2 || bonusNum == 3 || bonusNum == 4) {
+        $('.bonus').text('1000元购书卡');
+      } else if (bonusNum == 5 || bonusNum == 6 || bonusNum == 7) {
+        $('.bonus').text('鲁迅全集');
+      } else if (bonusNum == 8 || bonusNum == 9 || bonusNum == 10) {
+        $('.bonus').text('小牛电动车');
+      }
+      bonusNum++;
+    }
     if (config[5] === 0) {
       if (event.which === 32) {
         if (pressTimes < numArr.length) {
