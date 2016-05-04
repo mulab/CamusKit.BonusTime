@@ -24,11 +24,11 @@ $(document).ready(function () {
 
   // Add special background
   var addBackground = function () {
-    $('body').css('background', 'url(\'../images/background.jpg\') no-repeat center');
+    $('body').css('background', 'url(\'images/background.jpg\') no-repeat center');
   };
   var addCardBackground = function () {
     for (var i = 0; i < 10; i++) {
-      $('#card' + i).css('background', 'url(\'../images/' + i + '.jpg\') no-repeat center 200px').text('');
+      $('#card' + i).css('background', 'url(\'images/' + i + '.jpg\') no-repeat center 200px').text('');
     }
   };
 
