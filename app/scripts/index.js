@@ -124,6 +124,7 @@ $(document).ready(function () {
       } else if (bonusNum == 5 || bonusNum == 6 || bonusNum == 7) {
         $('.bonus').text('鲁迅全集');
       } else if (bonusNum == 8 || bonusNum == 9 || bonusNum == 10) {
+        $('body').css('background', 'url(\'images/background1.jpg\') center');
         $('.bonus').text('小牛电动车');
       }
       bonusNum++;
