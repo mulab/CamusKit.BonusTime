@@ -114,20 +114,24 @@ $(document).ready(function () {
   // Lottery
   var usedArr = [];
   var numArr = getRandomNum(usedArr, config[0], config[1], config[2]);
-  var pressTimes = 0, preNum = 0, bonusNum = 0;
+  var pressTimes = 0, preNum = 0, bonusNum = 1;
   $('body').keydown(function (event) {
-    if (event.which === 32) {
-      if (bonusNum == 0 || bonusNum == 1) {
+    if (event.which === 13) {
+      if (bonusNum == 0) {
+        $('body').css('background', 'url(\'images/background.jpg\') center');
         $('.bonus').text('Kindle');
-      } else if (bonusNum == 2 || bonusNum == 3 || bonusNum == 4) {
+        bonusNum++;
+      } else if (bonusNum == 1) {
         $('.bonus').text('1000元购书卡');
-      } else if (bonusNum == 5 || bonusNum == 6 || bonusNum == 7) {
+        bonusNum++;
+      } else if (bonusNum == 2) {
         $('.bonus').text('鲁迅全集');
-      } else if (bonusNum == 8 || bonusNum == 9 || bonusNum == 10) {
+        bonusNum++;
+      } else if (bonusNum == 3) {
         $('body').css('background', 'url(\'images/background1.jpg\') center');
         $('.bonus').text('小牛电动车');
+        bonusNum = 0;
       }
-      bonusNum++;
     }
     if (config[5] === 0) {
       if (event.which === 32) {
