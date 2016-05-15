@@ -117,7 +117,7 @@ $(document).ready(function () {
   var pressTimes = 0, preNum = 0;
   $('body').keydown(function (event) {
     if (config[5] === 0) {
-      if (event.which === 32) {
+      if (event.which === 75) {
         if (pressTimes < numArr.length) {
           showNumByTurn(pressTimes, numArr[pressTimes], preNum);
           preNum = numArr[pressTimes];
@@ -129,14 +129,14 @@ $(document).ready(function () {
         }
       }
     } else if (config[5] === 1) {
-      if (event.which === 32 && pressTimes === 0) {
+      if (event.which === 75 && pressTimes === 0) {
         toggleShape();
         pressTimes++;
-      } else if (event.which === 32 && pressTimes === 1) {
+      } else if (event.which === 75 && pressTimes === 1) {
         toggleShape();
         showNumOnce(numArr);
         pressTimes++;
-      } else if (event.which === 32 && pressTimes === 2) {
+      } else if (event.which === 75 && pressTimes === 2) {
         clearNum(numArr);
         numArr = getRandomNum(usedArr, config[0], config[1], config[2]);
         pressTimes = 0;
