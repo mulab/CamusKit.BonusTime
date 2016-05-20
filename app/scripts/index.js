@@ -24,7 +24,8 @@ $(document).ready(function () {
 
   // Add special background
   var addBackground = function () {
-    $('body').css('background', 'url(\'images/background.jpg\') no-repeat center');
+    $('body').css('background', 'url(\'images/background.jpg\')');
+    $('body').css('background-size', $(window).width() + 'px ' + $(window).height() + 'px');
   };
   var addCardBackground = function () {
     for (var i = 0; i < 10; i++) {
@@ -104,6 +105,16 @@ $(document).ready(function () {
 
   // 0: minNum, 1: maxNum, 2: numLength, 3: hasBackground.
   var config = readConfigFromJSON();
+
+  setInterval(function() {
+    $.ajax({
+      url: 'https://lottery.lab.mu/count',
+      async: false,
+      success: function (data) {
+        config[1] = data['count'];
+      }
+    });
+  }, 1000);
 
   // Add background
   if (config[3])
