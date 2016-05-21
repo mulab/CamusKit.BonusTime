@@ -111,7 +111,7 @@ $(document).ready(function () {
 
   function getNumber() {
     $.ajax({
-      url: 'https://lottery.lab.mu/count',
+      url: 'http://lottery.lab.mu/count',
       async: false,
       success: function (data) {
         config[1] = data['count'];
