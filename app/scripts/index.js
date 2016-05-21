@@ -111,7 +111,7 @@ $(document).ready(function () {
 
   function getNumber() {
     $.ajax({
-      url: 'https://wewall.hqythu.me/count',
+      url: 'https://lottery.lab.mu/count',
       async: false,
       success: function (data) {
         config[1] = data['count'];
