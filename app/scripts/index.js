@@ -3,7 +3,7 @@
 $(document).ready(function () {
   // Read config from config.json
   var readConfigFromJSON = function () {
-    var minNum = 0, maxNum = 999, size = 3, hasBackground = false, cardBackground = false, showMode = 0;
+    var minNum = 1, maxNum = 999, size = 3, hasBackground = false, cardBackground = false, showMode = 0;
     $.ajax({
       type: 'get',
       async: false,
@@ -35,10 +35,13 @@ $(document).ready(function () {
 
   // Get a random number, and return as a string array
   var getRandomNum = function (usedNum, minNum, maxNum, size) {
-    var randomNum = Math.round(Math.random() * (maxNum - minNum + 1) + minNum);
-    while (usedNum.indexOf(randomNum) !== -1)
+    var randomNum = Math.floor(Math.random() * (maxNum - minNum + 1) + minNum) + 1;
+    while (usedNum.indexOf(randomNum) !== -1) {
       randomNum = Math.round(Math.random() * (maxNum - minNum + 1) + minNum);
-    usedNum.push(randomNum);
+    }
+    if (!(maxNum - minNum - usedNum < 10)) {
+      usedNum.push(randomNum);
+    }
     var str = randomNum.toString();
     while (str.length < size) str = '0' + str;
     return str.split('');
@@ -106,15 +109,19 @@ $(document).ready(function () {
   // 0: minNum, 1: maxNum, 2: numLength, 3: hasBackground.
   var config = readConfigFromJSON();
 
-  setInterval(function() {
+  function getNumber() {
     $.ajax({
-      url: 'https://lottery.lab.mu/count',
+      url: 'https://wewall.hqythu.me/count',
       async: false,
       success: function (data) {
         config[1] = data['count'];
       }
     });
-  }, 1000);
+  }
+
+  getNumber();
+
+  setInterval(getNumber, 1000);
 
   // Add background
   if (config[3])
