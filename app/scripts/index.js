@@ -3,7 +3,7 @@
 $(document).ready(function () {
   // Read config from config.json
   var readConfigFromJSON = function () {
-    var minNum = 1, maxNum = 999, size = 3, hasBackground = false, cardBackground = false, showMode = 0;
+    var minNum = 1, maxNum = 999, size = 4, hasBackground = false, cardBackground = false, showMode = 0;
     $.ajax({
       type: 'get',
       async: false,
