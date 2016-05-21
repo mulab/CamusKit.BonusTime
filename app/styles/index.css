@@ -125,7 +125,7 @@ body {
 #stage {
   width: 100%;
   height: 500px;
-  -webkit-transition: -webkit-transform 2s;
+  -webkit-transition: -webkit-transform 1s;
   -webkit-transform-style: preserve-3d;
 }
 
@@ -150,7 +150,7 @@ body {
   font-size: 110pt;
   color: black;
   background-color: rgba(255, 255, 255, 0.6);
-  -webkit-transition: -webkit-transform 2s, opacity 2s;
+  -webkit-transition: -webkit-transform 1s, opacity 1s;
   -webkit-backface-visibility: hidden;
 }
 
@@ -159,7 +159,7 @@ body {
 }
 
 .jump0 {
-  -webkit-animation: jump0 1s;
+  -webkit-animation: jump0 0.5s;
 }
 
 @-webkit-keyframes jump0 {
@@ -181,7 +181,7 @@ body {
 }
 
 .jump1 {
-  -webkit-animation: jump1 1s;
+  -webkit-animation: jump1 0.5s;
 }
 
 @-webkit-keyframes jump1 {
@@ -203,7 +203,7 @@ body {
 }
 
 .jump2 {
-  -webkit-animation: jump2 1s;
+  -webkit-animation: jump2 0.5s;
 }
 
 @-webkit-keyframes jump2 {
@@ -225,7 +225,7 @@ body {
 }
 
 .jump3 {
-  -webkit-animation: jump3 1s;
+  -webkit-animation: jump3 0.5s;
 }
 
 @-webkit-keyframes jump3 {
@@ -247,7 +247,7 @@ body {
 }
 
 .jump4 {
-  -webkit-animation: jump4 1s;
+  -webkit-animation: jump4 0.5s;
 }
 
 @-webkit-keyframes jump4 {
@@ -269,7 +269,7 @@ body {
 }
 
 .jump5 {
-  -webkit-animation: jump5 1s;
+  -webkit-animation: jump5 0.5s;
 }
 
 @-webkit-keyframes jump5 {
@@ -291,7 +291,7 @@ body {
 }
 
 .jump6 {
-  -webkit-animation: jump6 1s;
+  -webkit-animation: jump6 0.5s;
 }
 
 @-webkit-keyframes jump6 {
@@ -313,7 +313,7 @@ body {
 }
 
 .jump7 {
-  -webkit-animation: jump7 1s;
+  -webkit-animation: jump7 0.5s;
 }
 
 @-webkit-keyframes jump7 {
@@ -335,7 +335,7 @@ body {
 }
 
 .jump8 {
-  -webkit-animation: jump8 1s;
+  -webkit-animation: jump8 0.5s;
 }
 
 @-webkit-keyframes jump8 {
@@ -357,7 +357,7 @@ body {
 }
 
 .jump9 {
-  -webkit-animation: jump9 1s;
+  -webkit-animation: jump9 0.5s;
 }
 
 @-webkit-keyframes jump9 {
@@ -379,7 +379,7 @@ body {
 }
 
 .jumpDown {
-  -webkit-animation: jumpDown 2s;
+  -webkit-animation: jumpDown 1s;
 }
 
 @-webkit-keyframes jumpDown {
@@ -392,7 +392,7 @@ body {
 }
 
 .cubeShow_0 {
-  -webkit-animation: cubeSpin0 5s infinite linear;
+  -webkit-animation: cubeSpin0 2.5s infinite linear;
 }
 
 @-webkit-keyframes cubeSpin0 {
@@ -418,7 +418,7 @@ body {
 }
 
 .cubeShow_1 {
-  -webkit-animation: cubeSpin1 5s infinite linear;
+  -webkit-animation: cubeSpin1 2.5s infinite linear;
 }
 
 @-webkit-keyframes cubeSpin1 {
@@ -444,7 +444,7 @@ body {
 }
 
 .cubeShow_2 {
-  -webkit-animation: cubeSpin2 5s infinite linear;
+  -webkit-animation: cubeSpin2 2.5s infinite linear;
 }
 
 @-webkit-keyframes cubeSpin2 {
@@ -470,7 +470,7 @@ body {
 }
 
 .cubeShow_3 {
-  -webkit-animation: cubeSpin3 5s infinite linear;
+  -webkit-animation: cubeSpin3 2.5s infinite linear;
 }
 
 @-webkit-keyframes cubeSpin3 {
@@ -496,7 +496,7 @@ body {
 }
 
 .cubeShow_4 {
-  -webkit-animation: cubeSpin4 5s infinite linear;
+  -webkit-animation: cubeSpin4 2.5s infinite linear;
 }
 
 @-webkit-keyframes cubeSpin4 {
@@ -522,7 +522,7 @@ body {
 }
 
 .cubeShow_5 {
-  -webkit-animation: cubeSpin5 5s infinite linear;
+  -webkit-animation: cubeSpin5 2.5s infinite linear;
 }
 
 @-webkit-keyframes cubeSpin5 {
@@ -548,7 +548,7 @@ body {
 }
 
 .cubeShow_6 {
-  -webkit-animation: cubeSpin6 5s infinite linear;
+  -webkit-animation: cubeSpin6 2.5s infinite linear;
 }
 
 @-webkit-keyframes cubeSpin6 {
@@ -574,7 +574,7 @@ body {
 }
 
 .cubeShow_7 {
-  -webkit-animation: cubeSpin7 5s infinite linear;
+  -webkit-animation: cubeSpin7 2.5s infinite linear;
 }
 
 @-webkit-keyframes cubeSpin7 {
@@ -600,7 +600,7 @@ body {
 }
 
 .cubeShow_8 {
-  -webkit-animation: cubeSpin8 5s infinite linear;
+  -webkit-animation: cubeSpin8 2.5s infinite linear;
 }
 
 @-webkit-keyframes cubeSpin8 {
@@ -626,7 +626,7 @@ body {
 }
 
 .cubeShow_9 {
-  -webkit-animation: cubeSpin9 5s infinite linear;
+  -webkit-animation: cubeSpin9 2.5s infinite linear;
 }
 
 @-webkit-keyframes cubeSpin9 {
@@ -767,4 +767,18 @@ body {
 .row {
   margin-right: 0;
   margin-left: 0;
+}
+
+#footer {
+  position: fixed;
+  padding: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  border: none;
+  color: white;
+  font-size: 15px;
+  background: rgba(14, 14, 14, 0.5);
 }
