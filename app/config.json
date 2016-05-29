@@ -1,10 +1,10 @@
 {
   "range": [
-    "0",
-    "999",
+    "1",
+    "800",
     "3"
   ],
   "background": false,
   "card": false,
-  "mode": 0
+  "mode": 1
 }
