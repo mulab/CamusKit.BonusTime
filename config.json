@@ -4,7 +4,7 @@
     "800",
     "3"
   ],
-  "background": false,
+  "background": true,
   "card": false,
-  "mode": 1
+  "mode": 0
 }
