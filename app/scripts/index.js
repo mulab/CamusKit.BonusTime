@@ -25,6 +25,7 @@ $(document).ready(function () {
   // Add special background
   var addBackground = function () {
     $('body').css('background', 'url(\'images/background.jpg\') no-repeat center');
+    $('body').css('background-size', '100% 100%');
   };
   var addCardBackground = function () {
     for (var i = 0; i < 10; i++) {
