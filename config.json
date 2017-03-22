@@ -1,8 +1,8 @@
 {
   "range": [
     "1",
-    "1800",
-    "4"
+    "999",
+    "3"
   ],
   "background": true,
   "card": false,
