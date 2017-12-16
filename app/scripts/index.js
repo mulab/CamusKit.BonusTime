@@ -1,24 +1,27 @@
 'use strict';
+import '../styles/index.scss'
 
 $(document).ready(function () {
   // Read config from config.json
   var readConfigFromJSON = function () {
     var minNum = 0, maxNum = 999, size = 3, hasBackground = false, cardBackground = false, showMode = 0;
-    $.ajax({
-      type: 'get',
-      async: false,
-      url: 'config.json',
-      contentType: 'application/json; charset=utf-8',
-      dataType: 'json',
-      success: function (data) {
-        minNum = data.range[0];
-        maxNum = data.range[1];
-        size = data.range[2];
-        hasBackground = data.background;
-        cardBackground = data.card;
-        showMode = data.mode;
-      }
-    });
+    const data = {
+      "range": [
+        "0",
+        "999",
+        "3"
+      ],
+      "background": false,
+      "card": false,
+      "mode": 1,
+    }
+
+    minNum = data.range[0];
+    maxNum = data.range[1];
+    size = data.range[2];
+    hasBackground = data.background;
+    cardBackground = data.card;
+    showMode = data.mode;
     return [minNum, maxNum, size, hasBackground, cardBackground, showMode];
   };
 
