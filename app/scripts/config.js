@@ -39,7 +39,7 @@ window.onload = () => {
   const generated = document.querySelector('#generated');
   form.addEventListener('submit', (e) => {
     const href = window.location.href;
-    const url = new URL('./', href);
+    const url = new URL('./index.html', href);
     if (options.min === 0 || options.min) {
       url.searchParams.set('min', options.min);
     }
