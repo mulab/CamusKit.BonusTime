@@ -1,30 +1,23 @@
 'use strict';
+import '../styles/index.scss'
 
 $(document).ready(function () {
-  // Read config from config.json
-  var readConfigFromJSON = function () {
+  var getConfig = function () {
+    const url = new URL(window.location.href);
     var minNum = 0, maxNum = 999, size = 3, hasBackground = false, cardBackground = false, showMode = 0;
-    $.ajax({
-      type: 'get',
-      async: false,
-      url: 'config.json',
-      contentType: 'application/json; charset=utf-8',
-      dataType: 'json',
-      success: function (data) {
-        minNum = data.range[0];
-        maxNum = data.range[1];
-        size = data.range[2];
-        hasBackground = data.background;
-        cardBackground = data.card;
-        showMode = data.mode;
-      }
-    });
-    return [minNum, maxNum, size, hasBackground, cardBackground, showMode];
+
+    minNum = parseInt(url.searchParams.get("min") || "1");
+    maxNum = parseInt(url.searchParams.get("max") || "999");
+    size = 3;
+    const customBackground = url.searchParams.get("bg_url");
+    cardBackground = false;
+    showMode = 1;
+    return [minNum, maxNum, size, customBackground, cardBackground, showMode];
   };
 
   // Add special background
-  var addBackground = function () {
-    $('body').css('background', 'url(\'images/background.jpg\') no-repeat center').css('background-size', '100% 100%');
+  var addBackground = function (bgUrl) {
+    $('body').css('background-image', `url(${bgUrl})`);
   };
   var addCardBackground = function () {
     for (var i = 0; i < 10; i++) {
@@ -103,11 +96,11 @@ $(document).ready(function () {
   };
 
   // 0: minNum, 1: maxNum, 2: numLength, 3: hasBackground.
-  var config = readConfigFromJSON();
+  var config = getConfig();
 
   // Add background
   if (config[3])
-    addBackground();
+    addBackground(config[3]);
   if (config[4])
     addCardBackground();
 
