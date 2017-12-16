@@ -1,5 +1,5 @@
 {
-  "version": "2.0",
+  "version": "2.0.0",
   "name": "bonustime",
   "devDependencies": {
     "node-sass": "^4.7.2"
@@ -9,5 +9,8 @@
   },
   "dependencies": {
     "babel-preset-env": "^1.6.1"
+  },
+  "scripts": {
+    "build": "parcel build --public-url ./ app/index.html && parcel build --public-url ./ app/config.html"
   }
 }
