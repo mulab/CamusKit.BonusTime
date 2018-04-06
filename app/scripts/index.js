@@ -4,14 +4,14 @@ import '../styles/index.scss'
 $(document).ready(function () {
   var getConfig = function () {
     const url = new URL(window.location.href);
-    var minNum = 0, maxNum = 999, size = 3, hasBackground = false, cardBackground = false, showMode = 0;
+    var minNum = 1, maxNum = 999, size = 3, hasBackground = false, cardBackground = false, showMode = 0;
 
     minNum = parseInt(url.searchParams.get("min") || "1");
     maxNum = parseInt(url.searchParams.get("max") || "999");
     size = 3;
     const customBackground = url.searchParams.get("bg_url");
     cardBackground = false;
-    showMode = 1;
+    showMode = 0;
     return [minNum, maxNum, size, customBackground, cardBackground, showMode];
   };
 
@@ -20,14 +20,17 @@ $(document).ready(function () {
     $('body').css('background-image', `url(${bgUrl})`);
   };
   var addCardBackground = function () {
-    for (var i = 0; i < 10; i++) {
+    for (var i = 1; i < 10; i++) {
       $('#card' + i).css('background', 'url(\'images/' + i + '.jpg\') no-repeat center 200px').text('');
     }
   };
 
   // Get a random number, and return as a string array
   var getRandomNum = function (usedNum, minNum, maxNum, size) {
-    var randomNum = Math.round(Math.random() * (maxNum - minNum + 1) + minNum);
+    var rand1 = Math.round(Math.random() * 9 + 1);
+    var rand2 = Math.round(Math.random() * 9 + 1);
+    var rand3 = Math.round(Math.random() * 9 + 1);
+    var randomNum = rand1 + 10 * rand2 + 100 * rand3;
     while (usedNum.indexOf(randomNum) !== -1)
       randomNum = Math.round(Math.random() * (maxNum - minNum + 1) + minNum);
     usedNum.push(randomNum);
@@ -45,7 +48,7 @@ $(document).ready(function () {
   var toggleBetweenNumAndCube = function (ringNum, cubeNum) {
     var $shape = $('#shape');
     $shape.toggleClass('ringShow_' + ringNum).toggleClass('cubeShow_' + cubeNum);
-    $shape.css('-webkit-transform', 'rotateY(' + (-36 * ringNum) + 'deg)');
+    $shape.css('-webkit-transform', 'rotateY(' + (-40 * (ringNum - 1)) + 'deg)');
   };
 
   // Let card jump
