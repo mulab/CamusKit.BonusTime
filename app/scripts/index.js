@@ -11,7 +11,7 @@ $(document).ready(function () {
     size = 3;
     const customBackground = url.searchParams.get("bg_url");
     cardBackground = false;
-    showMode = 0;
+    showMode = 1;
     return [minNum, maxNum, size, customBackground, cardBackground, showMode];
   };
 
