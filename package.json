@@ -2,7 +2,7 @@
   "version": "2.0.0",
   "name": "bonustime",
   "devDependencies": {
-    "node-sass": "^4.7.2"
+    "node-sass": "^7.0.0"
   },
   "engines": {
     "node": ">=6.0.0"
